@@ -1,0 +1,43 @@
+.App {
+    width : 100vw;
+    height : 100vh;
+    overflow: hidden;
+
+    display : flex;
+    justify-content: center;
+    align-items: center;
+
+    &__form {
+        width : 45vh;
+        background : white;
+
+        display: flex;
+        padding-left : 6vh;
+        padding-right: 6vh;
+        padding-top: 3vh;
+        padding-bottom: 8vh;
+        flex-direction: column;
+        border-radius: 3vh;
+        transition: 400ms;
+
+        &__title {
+            text-align: center;
+            padding-bottom: 3vh;
+            transform: translateY(3vh);
+            font-size: 4vh;
+        }
+
+        &__input, &__select {
+            margin-top: 5vh;
+            height : 4vh;
+            border: none;
+            border-bottom: solid black 1px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        &__button {
+            margin-top : 5vh;
+        }
+    }
+}
