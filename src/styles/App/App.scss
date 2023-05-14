@@ -11,6 +11,12 @@
         width : 45vh;
         background : white;
 
+        @media screen and (orientation : portrait){
+            margin : 1vh;
+        }
+
+        animation: appear 750ms;
+
         display: flex;
         padding-left : 6vh;
         padding-right: 6vh;
@@ -20,6 +26,18 @@
         border-radius: 3vh;
         transition: 400ms;
 
+        @mixin input() {
+            margin-top: 5vh;
+            height : 4vh;
+            border: none;
+            border-bottom: solid black 0.2vh;
+            outline: none;
+            cursor: pointer;
+            transition: border-color 250ms;
+            will-change: border-color;
+            font-size: 1.4vh;
+        }
+
         &__title {
             text-align: center;
             padding-bottom: 3vh;
@@ -28,16 +46,80 @@
         }
 
         &__input, &__select {
-            margin-top: 5vh;
+            @include input();
+        }
+
+        &__input:focus, &__select:focus {
+            border-color: #b942f5;
+        }
+
+        &__input::-webkit-input-placeholder {
+            color : rgb(17, 17, 17);
+            font-weight: 300;
+            font-size : 1.4vh;
+        }
+
+        &__timeInput {     
+            width : 100%;
             height : 4vh;
-            border: none;
-            border-bottom: solid black 1px;
-            outline: none;
-            cursor: pointer;
+            margin-top : 5vh;
+
+            &__label {
+                color : rgb(17, 17, 17);
+                font-weight: 300;
+                font-size : 1.4vh;
+            }
+
+            &__div {
+                display : flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &__input {
+                    @include input();
+                    width : 35%;
+                    margin : 0;
+                }
+
+                &__input:focus {
+                    border-color: #b942f5;
+                }
+
+                &__label {
+                    width : 10%;
+                    text-align: center;
+                    height : 4vh;
+                    display : flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
         }
 
         &__button {
             margin-top : 5vh;
+            border : none;
+            cursor: pointer;
+            background: linear-gradient(90deg,#b942f5,#4b9cff);
+            color : white;
+            width : 100%;
+            height : 4vh;
+            font-size : 1.75vh;
+            border-radius: 2vh;
+            font-weight: 500;
+        }
+    }
+
+    @keyframes appear {
+        from {
+            opacity : 0;
+            transform: translateY(6vh);
+        }
+
+        to {
+            opacity : 1;
+            transform: translateY(0vh);
         }
     }
 }
