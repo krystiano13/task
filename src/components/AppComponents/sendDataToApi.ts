@@ -6,8 +6,6 @@ export const sendDataToApi = (
     setError: React.Dispatch<React.SetStateAction<string>>,
     setModal: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-    console.log(state);
-
     fetch('https://umzzcc503l.execute-api.us-west-2.amazonaws.com/dishes/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

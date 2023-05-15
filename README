@@ -1,0 +1,6 @@
+How to setup project:
+
+- download or clone this repository
+- go to project folder and run "npm install" in terminal
+- run "npm run start"
+- have fun
