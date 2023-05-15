@@ -1,1 +1,51 @@
-/*# sourceMappingURL=Modal.css.map */
+.Modal {
+  position: fixed;
+  z-index: 1000;
+  width: 70%;
+  height: 85%;
+  background-color: white;
+  border-radius: 3.5vh;
+  animation: appear 400ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+}
+@media screen and (orientation: portrait) {
+  .Modal {
+    width: 98%;
+  }
+}
+.Modal__title {
+  font-size: 6vh;
+  text-align: center;
+}
+.Modal__text {
+  font-size: 4vh;
+  font-weight: 300;
+  text-align: center;
+  max-width: 80%;
+}
+.Modal__button {
+  margin-top: 5vh;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #b942f5, #4b9cff);
+  color: white;
+  width: 80%;
+  height: 5vh;
+  font-size: 1.8vh;
+  border-radius: 2vh;
+  font-weight: 500;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=Modal.css.map */

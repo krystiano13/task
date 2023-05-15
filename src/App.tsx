@@ -5,19 +5,25 @@ import './styles/App/App.css';
 import { Form, Field } from 'react-final-form';
 import { sendDataToApi } from "./components/AppComponents/sendDataToApi";
 import { StateType } from "./components/AppComponents/StateType";
+import { Modal } from "./components/Modal/Modal";
 
 const App = () => {
     const [type, setType] = React.useState<string>('pizza');
     const [time, setTime] = React.useState<string>('00:00:00');
     const [success, setSuccess] = React.useState<boolean>(false);
+    const [modal, setModal] = React.useState<boolean>(false);
+    const [error, setError] = React.useState<string>('');
     const changeType = (value: string) => setType(value);
     const changeTime = (value: string) => setTime(value);
     return (
         <main className="App">
+            {
+                modal && <Modal success={success} setModal={setModal} error={error} />
+            }
             <Form
                 onSubmit={(values) => {
-                    const obj = { preparation_time: time,...values, type: type };
-                    sendDataToApi(obj as StateType);
+                    const obj = { preparation_time: time, ...values, type: type };
+                    sendDataToApi(obj as StateType, setSuccess, setError, setModal);
                 }}
                 render={(renderProps) => {
                     return (
@@ -52,14 +58,14 @@ const App = () => {
                             {
                                 type === "soup" &&
                                 <Field name="spiciness_scale" render={({ input }) => (
-                                    <input { ...input } required min={1} max={10} className="App__form__input" type='number' placeholder="spiciness" />
+                                    <input {...input} required min={1} max={10} className="App__form__input" type='number' placeholder="spiciness" />
                                 )} />
                             }
 
                             {
                                 type === "sandwich" &&
                                 <Field name="slices_of_bread" render={({ input }) => (
-                                    <input { ...input } required min={1} max={12} className="App__form__input" type='number' placeholder="slices of bread" />
+                                    <input {...input} required min={1} max={12} className="App__form__input" type='number' placeholder="slices of bread" />
                                 )} />
                             }
 
