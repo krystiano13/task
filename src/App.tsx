@@ -12,7 +12,7 @@ const App = () => {
     const [time, setTime] = React.useState<string>('00:00:00');
     const [success, setSuccess] = React.useState<boolean>(false);
     const [modal, setModal] = React.useState<boolean>(false);
-    const [error, setError] = React.useState<string>('');
+    const [error, setError] = React.useState<boolean>(false);
     const changeType = (value: string) => setType(value);
     const changeTime = (value: string) => setTime(value);
     return (
@@ -22,8 +22,9 @@ const App = () => {
             }
             <Form
                 onSubmit={(values) => {
-                    const obj = { preparation_time: time, ...values, type: type };
+                    let obj = { preparation_time: time, ...values, type: type };
                     sendDataToApi(obj as StateType, setSuccess, setError, setModal);
+                    values = {};
                 }}
                 render={(renderProps) => {
                     return (
