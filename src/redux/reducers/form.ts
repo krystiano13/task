@@ -3,49 +3,38 @@ import { createSlice } from '@reduxjs/toolkit';
 export const formSlice = createSlice({
     name: "form",
     initialState: {
-        dishName: "JD",
-        preparationTime: "00 : 00",
+        name: "",
+        preparation_time: "00 : 00",
         type: "pizza",
-        numberOfSlices: 0,
+        no_of_slices: 0,
         diameter: 0.00,
-        spiciness: 1,
-        slicesOfBread: 0
+        spiciness_scale: 1,
+        slices_of_bread: 1,     
     },
     reducers: {
         setType: (state,action) => {
             state.type = action.payload;
         },
         setPreparationTime: (state, action) => {
-            state.preparationTime = action.payload
+            state.preparation_time = `${action.payload}:00`
         },
         setOtherValues: (state, action) => {
-            state.dishName = action.payload.dishName;
+            state.name = action.payload.dishName;
+            state.no_of_slices = Number(action.payload.slices);
             switch (state.type) {
                 case "pizza":
-                    state.numberOfSlices = action.payload.slices;
+                    state.no_of_slices = Number(action.payload.slices);
                     state.diameter = action.payload.diameter;
                     break;
                 case "soup":
-                    state.spiciness = action.payload.spiciness;
+                    state.spiciness_scale = action.payload.spiciness;
                     break;
                 case "sandwich":
-                    state.slicesOfBread = action.payload.slicesOfBread;
+                    state.slices_of_bread = action.payload.slicesOfBread;
                     break;
             } 
-        }
+        },
     }
 });
-
-export type StateType = {
-    form: {
-        dishName: string;
-        preparationTime: string;
-        type: string;
-        numberOfSlices: number;
-        diameter: number;
-        spiciness: number;
-        slicesOfBread: number;
-    }
-}
 
 export const { setType, setPreparationTime, setOtherValues } = formSlice.actions;

@@ -3,7 +3,7 @@ import { formSlice } from "../reducers/form";
 
 const store = configureStore({
     reducer: {
-        form : formSlice.reducer
+        form: formSlice.reducer
     }
 });
 

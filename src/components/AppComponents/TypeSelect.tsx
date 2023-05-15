@@ -1,10 +1,14 @@
 import React from "react";
 
 interface TypeSelectInterface {
-    selectOption: (e : React.MouseEvent < HTMLSelectElement >) => void
+    changeType: (value:string) => void
 }
 
-const TypeSelect: React.FC<TypeSelectInterface> = ({selectOption}) => {
+const TypeSelect:React.FC<TypeSelectInterface> = ({ changeType }) => {
+    const selectOption = (e: React.MouseEvent<HTMLSelectElement>) => {
+        const select = e.target as HTMLSelectElement;
+        changeType(select.options[select.selectedIndex].text)
+    }
     return (
         <select onClick={selectOption}
             className="App__form__select">
