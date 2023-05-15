@@ -2,6 +2,7 @@
   "name": "task",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://krystiano13.github.io/taskLive",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
